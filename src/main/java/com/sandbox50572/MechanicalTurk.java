@@ -1,5 +1,8 @@
 package com.sandbox50572;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -9,9 +12,11 @@ public class MechanicalTurk implements Runnable {
 
     String name;
     String url_get_page;
+    String url2;
     public MechanicalTurk(String name, String url_get_page) {
       this.name = name;
       this.url_get_page = url_get_page;
+      this.url2 = "https://www.mturk.com";
     }
     public void run() {
 
@@ -25,6 +30,14 @@ public class MechanicalTurk implements Runnable {
 
         //Заходим на страницу google
         driver.get(url_get_page);
+
+        //находим элемент поиск google
+        WebElement googleSearch = driver.findElementById("lst-ib");
+        //вводим поисковый запрос
+        googleSearch.sendKeys("https://www.mturk.com");
+        googleSearch.sendKeys(Keys.ENTER);
+
+
         /*
         //TODO Автооризация в аккаунте google
         //находим элемент воити
@@ -45,11 +58,11 @@ public class MechanicalTurk implements Runnable {
         //находим и жмем кнопку
         WebElement cont2 = driver.findElementByClassName("CwaK9");
         cont2.click();
+        */
 
-      */
-
+        //driver.navigate().to("https://www.mturk.com");
         //TODO Вход на MechanicalTurk
-        driver.get("https://www.mturk.com");
+        //driver.get("https://www.mturk.com");
         /*
         //Авторизация
         WebElement loginF = driver.findElementById("index_email");
