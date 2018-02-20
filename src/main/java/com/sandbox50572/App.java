@@ -25,8 +25,9 @@ public class App
             e.printStackTrace();
         }
       */
-      TimeControl timeControl = new TimeControl();
-      timeControl.printDate();
+      Runnable timeControl = new TimeControl();
+      Thread threadTimeControl = new Thread(timeControl);
+      threadTimeControl.start();
         System.out.println( "Метод main завершен." );
 
     }

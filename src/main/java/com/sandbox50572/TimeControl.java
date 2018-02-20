@@ -2,10 +2,21 @@ package com.sandbox50572;
 
 import java.util.Date;
 
-public class TimeControl {
+public class TimeControl implements Runnable {
 
-    public void printDate() {
-        Date date = new Date();
-        System.out.println(date.toString());
+   public TimeControl() {
+
+   }
+
+    public void run() {
+        while (true) {
+            try {
+                Thread.sleep(60000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Date date = new Date();
+            System.out.println(date.toString());
+        }
     }
 }
